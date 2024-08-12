@@ -6,8 +6,22 @@
 //Dynamically change the color of the h1 using inline css styles.
 //Morning = red, Afternoon = green, Night = blue.
 
-// If you're running this locally in VS Code use the commands:
-// npm install
-// to install the node modules and
-// npm run dev
-// to launch your react project in your browser
+import React from "react";
+import ReactDOM from "react-dom";
+
+var day = "Good Morning";
+const d = new Date();
+const hour =d.getHours();
+console.log(hour)
+const customStyle ={
+    color: "red"
+}
+if(hour>12 && hour < 18){
+    day = "Good Afternoon";
+customStyle.color = "green"
+}
+if (hour > 18){
+    day = "Good Night"
+    customStyle.color = "blue"
+}
+ReactDOM.render(<h1 style ={customStyle}>{day}</h1>,document.getElementById("root"));
